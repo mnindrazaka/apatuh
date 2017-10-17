@@ -1,10 +1,10 @@
 import {StackNavigator} from 'react-navigation';
-import Home from '../containers/Home';
-import Profile from '../containers/Profile';
+import MainScreenTab from '../containers/Main';
+import DetailScreenTab from '../containers/Detail';
 
 const Navigator = StackNavigator({
-	Home: {screen: Home},
-	Profile: {screen: Profile}
+	Main: {screen: MainScreenTab},
+	Detail: {screen: DetailScreenTab}
 });
 
 export default Navigator;
