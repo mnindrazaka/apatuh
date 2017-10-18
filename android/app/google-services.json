@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "661279065973",
+    "firebase_url": "https://apatuh-f17a1.firebaseio.com",
+    "project_id": "apatuh-f17a1",
+    "storage_bucket": "apatuh-f17a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661279065973:android:8ccd4d31326791a4",
+        "android_client_info": {
+          "package_name": "com.apatuh"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "661279065973-nkc67flkciv497i2g7qsppmab2h6t93k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBe1wR1SQLkKo7er59EZLmCjsn5G4GtltE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
