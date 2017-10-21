@@ -1,15 +1,17 @@
 import {StackNavigator} from 'react-navigation';
-import MainScreenTab from '../containers/Main';
-import DetailScreenTab from '../containers/Detail';
+import Camera from '../containers/Camera';
+import Prediction from '../containers/Prediction';
 import styles from '../styles';
 
 const Navigator = StackNavigator({
-	Main: {screen: MainScreenTab},
-	Detail: {screen: DetailScreenTab}
+	Camera: {screen: Camera},
+	Prediction: {screen: Prediction}
 }, {
 	navigationOptions: {
 		headerStyle: styles.header,
-		headerTitleStyle: styles.headerTitle
+		headerTitleStyle: styles.headerTitle,
+		headerBackTitleStyle: styles.headerBackTitle,
+		headerTintColor: '#fff'
 	}
 });
 

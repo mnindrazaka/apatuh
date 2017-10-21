@@ -7,6 +7,9 @@ const styles = StyleSheet.create({
 	headerTitle: {
 		color: 'white'
 	},
+	headerBackTitle: {
+		color: 'white'
+	},
 	tabBar: {
 		backgroundColor:  '#009688'
 	},
