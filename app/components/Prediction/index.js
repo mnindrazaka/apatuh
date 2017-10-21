@@ -1,15 +1,17 @@
 import React, {Component} from 'react';
-import {Text, Image, TouchableOpacity} from 'react-native';
+import {Text, Image} from 'react-native';
 import {Container, Content, List, ListItem, Body, Right, Icon} from 'native-base';
+
 import styles from './styles';
 
 export default class Prediction extends Component {
 
 	static navigationOptions = {
-		title: "Object Predictions"
+		title: "PREDICTION"
 	};
 
 	renderRow(rowData) {
+		console.log(this.props);
 		return (
 			<ListItem
 				key={rowData.id}

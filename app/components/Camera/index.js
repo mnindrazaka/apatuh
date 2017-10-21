@@ -2,13 +2,15 @@ import React, {Component} from 'react';
 import {View, Text, Modal, Button, Image} from 'react-native';
 import {Icon, List, ListItem, Left, Body, Right} from 'native-base';
 import RNCamera from 'react-native-camera';
+import Spinner from 'react-native-loading-spinner-overlay';
 import styles from './styles';
 
 export default class Camera extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			isModalVisible: false
+			isModalVisible: false,
+			isSpinnerVisible: false
 		}
 	}
 
@@ -17,7 +19,6 @@ export default class Camera extends Component {
 	};
 
 	render() {
-		console.log(this.props);
 		return(
 			<View style={styles.container}>
 				<RNCamera
@@ -30,13 +31,20 @@ export default class Camera extends Component {
 					<View style={styles.cameraTop}>
 						<Text
 							style={styles.cameraButton}
-							onPress={() => this.setState({isModalVisible: true})}>
+							onPress={() => this.setState({isModalVisible: true}) }>
 							{this.props.camera + ' detection'}
 						</Text>
 					</View>
 
 					<View style={styles.cameraBottom}>
-						<Text style={styles.capture} onPress={() => this.props.capturePhoto(this.camera, this.props.camera)}>
+						<Text
+							style={styles.capture}
+							onPress={() => {
+								this.setState({isSpinnerVisible: true});
+								this.props.capturePhoto(this.camera, this.props.camera).then(() => {
+									this.setState({ isSpinnerVisible: false });
+								});
+							}}>
 							<Icon name="camera" style={styles.captureIcon} />
 						</Text>
 					</View>
@@ -62,8 +70,8 @@ export default class Camera extends Component {
 									<Image style={styles.modalImage} source={require('../../images/general.png')} />
 								</Left>
 								<Body>
-									<Text style={styles.textTitle}>Object Detection</Text>
-									<Text note>Detect General Object</Text>
+								<Text style={styles.textTitle}>Object Detection</Text>
+								<Text note>Detect General Object</Text>
 								</Body>
 							</ListItem>
 
@@ -79,8 +87,8 @@ export default class Camera extends Component {
 									<Image style={styles.modalImage} source={require('../../images/fashion.png')} />
 								</Left>
 								<Body>
-									<Text style={styles.textTitle}>Fashion Detection</Text>
-									<Text note>Detect Fashion Related Object</Text>
+								<Text style={styles.textTitle}>Fashion Detection</Text>
+								<Text note>Detect Fashion Related Object</Text>
 								</Body>
 							</ListItem>
 
@@ -96,8 +104,8 @@ export default class Camera extends Component {
 									<Image style={styles.modalImage} source={require('../../images/food.png')} />
 								</Left>
 								<Body>
-									<Text style={styles.textTitle}>Food Detection</Text>
-									<Text note>Detect Food Related Object</Text>
+								<Text style={styles.textTitle}>Food Detection</Text>
+								<Text note>Detect Food Related Object</Text>
 								</Body>
 							</ListItem>
 
@@ -109,6 +117,12 @@ export default class Camera extends Component {
 							onPress={() => this.setState({isModalVisible: false})}/>
 					</View>
 				</Modal>
+
+				<Spinner
+					visible={this.state.isSpinnerVisible}
+					textContent={"Predicting " + this.props.camera}
+					textStyle={{color: '#FFF'}}
+					overlayColor={'#3cb338'} />
 			</View>
 		);
 	}

@@ -3,6 +3,7 @@ import Prediction from '../components/Prediction';
 
 const mapStateToProps = (state) => {
 	return {
+		camera: state.camera,
 		object: state.object
 	};
 };

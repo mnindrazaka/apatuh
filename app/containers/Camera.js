@@ -12,7 +12,7 @@ import {
 } from '../actions';
 
 const mapDispatchToProps = (dispatch) => ({
-	capturePhoto: (camera, mode) => {
+	capturePhoto:  (camera, mode) => {
 		let model = null;
 		switch (mode) {
 			case 'object':
@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch) => ({
 		}
 		const options = {};
 
-		camera.capture({metadata: options}).then(data => {
+		return camera.capture({metadata: options}).then(data => {
 			dispatch(changePhoto(data.path));
 			return firebaseApp.storage().ref('/' + uuid() + '.jpg').putFile(data.path);
 		}).then(data => {
